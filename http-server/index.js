@@ -1,11 +1,35 @@
 // HTTP Request routing library
-var router = require('tiny-router'),
+const router = require('tiny-router'),
     // Websocket library
     ws = require("nodejs-websocket"),
     // Use fs for static files
     fs = require('fs'),
+Tessel = require("tessel-io"),
+five = require("johnny-five"),
     // Use tessel for changing the LEDs
     tessel = require('tessel');
+
+//Instanciate New Board
+const board = new five.Board({
+    io: new Tessel()
+});
+board.on("ready", () => {
+    // When the router gets an HTTP request at /leds/[NUMBER]
+    router.get("/leds/{led}", function (req, res, board) {
+        console.log('which led?', req.body.led)
+        //Multiple LED
+        let leds = new five.Leds(["a0", "a1", "a2", "a3", "a4", "a6"]);
+        // Grab the LED being toggled
+        var index = req.body.led;
+        // Toggle the LED
+        console.log('INDEX - ' + index);
+    
+        leds[index].toggle();
+        // Send a response
+        res.send(200);
+    });
+
+});
 
 // The router should use our static folder for client HTML/JS
 router.use('static', { path: __dirname +'/static' })
@@ -13,17 +37,6 @@ router.use('static', { path: __dirname +'/static' })
     .use('fs', fs)
     // Listen on port 8080
     .listen(8080);
-
-// When the router gets an HTTP request at /leds/[NUMBER]
-router.get("/leds/{led}", function (req, res) {
-    console.log('which led?', req.body.led)
-    // Grab the LED being toggled
-    var index = req.body.led;
-    // Toggle the LED
-    tessel.led[index].toggle();
-    // Send a response
-    res.send(200);
-});
 
 // Create a websocket server on port 8001
 ws.createServer(function (conn) {

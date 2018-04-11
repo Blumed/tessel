@@ -3,16 +3,50 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Tessel Server</title>
+
+    <style>
+        body,html {
+            padding: 0;
+            margin: 0;
+            font-family: "Helvetica Neue", sans-serif;
+        }
+        *{
+            box-sizing: border-box;
+        }
+        h1 {
+            text-align: center;
+        }
+        .btn-wrap {
+            font-size: 0;
+        }
+        button {
+            width: 33.33333%;
+            border: 0;
+            background-color: pink;
+            color: blue;
+            height: 25vh;
+            font-size: 14px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 
 <body>
 
     <h1>Tessel Web Server</h1>
-    <button class="led" id="led-0">Toggle LED0</button>
-    <button class="led" id="led-1">Toggle LED1</button>
-    <button class="led" id="led-2">Toggle LED2</button>
-    <button class="led" id="led-3">Toggle LED3</button>
+    <div class="btn-wrap">
+        <button class="led" id="led-0">Toggle LED1</button>
+        <button class="led" id="led-1">Toggle LED2</button>
+        <button class="led" id="led-2">Toggle LED3</button>
+        <button class="led" id="led-3">Toggle LED4</button>
+        <button class="led" id="led-4">Toggle LED5</button>
+        <button class="led" id="led-5">Toggle LED6</button>
+    </div>
+
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" type="text/javascript">
     </script>
@@ -34,6 +68,7 @@
                     console.log('led ' + index + ' toggled');
                 },
             });
+            console.log(index);
         }
     </script>
 
@@ -45,19 +80,6 @@
         // We'll be flipping the state
         var state = true;
 
-        // Every five seconds
-        setInterval(function () {
-            // Construct a packet
-            var packet = {
-                led: 0,
-                on: state
-            }
-            // Send it over the websocket
-            exampleSocket.send(JSON.stringify(packet));
-            // Change the state var
-            state = !state
-
-        }, 5000);
     </script>
 </body>
 
