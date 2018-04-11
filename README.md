@@ -12,6 +12,7 @@ Starting ( Iot/Node ) research home automation
 ## Big goals
 
 - Automated Herb Garden 
+- Automated cat box deodorizer
 
 
 ### Refrences
