@@ -15,15 +15,14 @@ const board = new five.Board({
 });
 board.on("ready", () => {
     // When the router gets an HTTP request at /leds/[NUMBER]
-    router.get("/leds/{led}", function (req, res, board) {
+    router.get("/leds/{led}", function (req, res) {
         console.log('which led?', req.body.led)
         //Multiple LED
-        let leds = new five.Leds(["a0", "a1", "a2", "a3", "a4", "a6"]);
+        let leds = new five.Leds(["a0", "a1", "a2", "a3", "a4", "a5"]);
         // Grab the LED being toggled
         var index = req.body.led;
+
         // Toggle the LED
-        console.log('INDEX - ' + index);
-    
         leds[index].toggle();
         // Send a response
         res.send(200);

@@ -17,7 +17,7 @@ const board = new five.Board({
 
 //Multiple LED
 board.on("ready", () => {
-    let leds = new five.Leds(["a2", "a3", "a4", "a5", "a6", "a7"]);
+    let leds = new five.Leds(["a0", "a1", "a2", "a3", "a4", "a5"]);
     let index = 0;
     let step = 1;
 

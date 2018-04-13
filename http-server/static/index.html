@@ -12,25 +12,34 @@
             padding: 0;
             margin: 0;
             font-family: "Helvetica Neue", sans-serif;
+            color: blue;
         }
         *{
             box-sizing: border-box;
         }
         h1 {
+             color: inherit;
             text-align: center;
         }
         .btn-wrap {
             font-size: 0;
+            margin: 0 5px;
+        }
+        .active {
+            font-weight: bold;
+            border-color: blue;
+            outline: 0;
         }
         button {
             width: 33.33333%;
-            border: 0;
+            border: 5px solid white;
             background-color: pink;
-            color: blue;
+            color: inherit;
             height: 25vh;
             font-size: 14px;
             display: inline-block;
             margin-bottom: 10px;
+            transition: all .3s ease;
         }
     </style>
 </head>
@@ -39,12 +48,12 @@
 
     <h1>Tessel Web Server</h1>
     <div class="btn-wrap">
-        <button class="led" id="led-0">Toggle LED1</button>
-        <button class="led" id="led-1">Toggle LED2</button>
-        <button class="led" id="led-2">Toggle LED3</button>
-        <button class="led" id="led-3">Toggle LED4</button>
-        <button class="led" id="led-4">Toggle LED5</button>
-        <button class="led" id="led-5">Toggle LED6</button>
+        <button class="led" id="led-0">Toggle LED 1</button>
+        <button class="led" id="led-1">Toggle LED 2</button>
+        <button class="led" id="led-2">Toggle LED 3</button>
+        <button class="led" id="led-3">Toggle LED 4</button>
+        <button class="led" id="led-4">Toggle LED 5</button>
+        <button class="led" id="led-5">Toggle LED 6</button>
     </div>
 
 
@@ -54,6 +63,11 @@
     <script>
         // When one of our LED buttons is clicked, call toggleLED
         $('.led').click(toggleLED);
+        $('.led').on('click', function(){
+            $('.led').removeClass('active');
+            $(this).addClass('active');
+        });
+        
 
         function toggleLED() {
 
