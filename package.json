@@ -16,9 +16,13 @@
   "license": "MIT",
   "readme": "A bare bones Tessel 2 blinky script.",
   "dependencies": {
+    "ambient-attx4": "^0.2.11",
     "barcli": "0.0.25",
+    "ir-attx4": "^0.2.10",
     "johnny-five": "^0.14.3",
     "nodejs-websocket": "^1.7.1",
+    "pir": "^0.2.0",
+    "tessel-apple-remote": "^0.1.1",
     "tessel-io": "^1.2.0",
     "tiny-router": "^0.1.5"
   }
