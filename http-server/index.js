@@ -18,7 +18,7 @@ board.on("ready", () => {
     router.get("/leds/{led}", function (req, res) {
         console.log('which led?', req.body.led)
         //Multiple LED
-        let leds = new five.Leds(["a0", "a1", "a2", "a3", "a4", "a5"]);
+        let leds = new five.Leds(["a0", "a1", "a2", "a3", "a4", "a5", "a6", "a7", "b0", "b1"]);
         // Grab the LED being toggled
         var index = req.body.led;
 

@@ -4,5 +4,5 @@
 
 ### Goal
 
-- Control Lights on breadboard using Johnnyman's demo as a boilerplate
+[x] Control Lights on breadboard using Johnnyman's demo as a boilerplate
 
